@@ -15,8 +15,8 @@ public class Player {
     private Strategy giveRandomStrategy(){
         Random r = new Random();
         if (r.nextBoolean()) {
-            return new Strategy("Party");
-        } else return new Strategy("Home");
+            return new Strategy(0);
+        } else return new Strategy(1);
         
     }
 
@@ -34,6 +34,10 @@ public class Player {
 
     public void setNewStrategy(Strategy newStrategy) {
         this.newStrategy = newStrategy;
+    }
+    
+    public int playWith(Player other){
+        return 0;
     }
     
     

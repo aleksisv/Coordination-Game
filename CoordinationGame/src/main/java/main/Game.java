@@ -49,9 +49,18 @@ public class Game {
     
     public void playTurn(){
         this.time++;
+        pVsP(players.get(0), players.get(1));
         
     }
-    
+
+    private void pVsP(Player player1, Player player2) {
+        int payoff1 = payoffMatrix[player1.getCurrentStrategy().getStrategy()]
+                [player2.getCurrentStrategy().getStrategy()].getFirst();
+        int payoff2 = payoffMatrix[player1.getCurrentStrategy().getStrategy()]
+                [player2.getCurrentStrategy().getStrategy()].getSecond();
+        
+        
+    }
     
     
 }
