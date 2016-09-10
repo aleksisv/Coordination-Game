@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Player {
+
     private int[] fitnesses;
     private Strategy currentStrategy;
     private Strategy newStrategy;
@@ -44,17 +45,31 @@ public class Player {
     public int[] getFitnesses() {
         return fitnesses;
     }
-    
+
     public void tryChangingStrategies() {
         Random r = new Random();
-        
+
         int denominator = this.fitnesses[0] + this.fitnesses[1];
         int nominator = this.fitnesses[this.getCurrentStrategy().getStrategy()];
-        double quotient = (double) nominator/denominator;
-        System.out.println("Relative fitness of strategy " + this.currentStrategy.getStrategy() + ": " + quotient);
+        double quotient = (double) nominator / denominator;
+        System.out.println("The relative fitness of strategy " + this.currentStrategy.getStrategy() + ": " + quotient);
         if (r.nextDouble() > quotient) {
             this.currentStrategy.setStrategy(1 - this.currentStrategy.getStrategy());
         }
+    }
+
+    public void tryChangingStrategiesWithMorePossibilities() {
+        Random r = new Random();
+        int denominator = 0;
+        for (int i = 0; i < this.fitnesses.length; i++) {
+            denominator += this.fitnesses[i];
+        }
+        int nominator = this.fitnesses[this.getCurrentStrategy().getStrategy()];
+        int totalFitness = calculateTotalFitness(this.fitnesses);
+    }
+    
+    public int calculateTotalFitness(int[] fitness){
+        return 0;
     }
 
 }

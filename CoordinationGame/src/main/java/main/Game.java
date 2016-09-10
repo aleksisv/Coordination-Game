@@ -38,7 +38,7 @@ public class Game {
         payoffs[0][0] = new Pair(10, 10);
         payoffs[0][1] = new Pair(0, 0);
         payoffs[1][0] = new Pair(0, 0);
-        payoffs[1][1] = new Pair(7, 7);
+        payoffs[1][1] = new Pair(5, 5);
         
         setPayoffMatrix(payoffs);
     }

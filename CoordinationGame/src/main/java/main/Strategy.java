@@ -25,7 +25,4 @@ public class Strategy {
     public void setFitness(int fitness) {
         this.fitness = fitness;
     }
-    
-    
-
 }
