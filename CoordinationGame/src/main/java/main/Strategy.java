@@ -1,21 +1,31 @@
-
 package main;
 
 public class Strategy {
-    private String strategy;
 
-    public Strategy(String strategy) {
+    private int strategy;
+    private int fitness;
+
+    public Strategy(int strategy) {
         this.strategy = strategy;
+        this.fitness = 50;
     }
-    
 
-    public String getStrategy() {
+    public int getStrategy() {
         return strategy;
     }
 
-    public void setStrategy(String strategy) {
+    public void setStrategy(int strategy) {
         this.strategy = strategy;
+    }
+
+    public int getFitness() {
+        return fitness;
+    }
+
+    public void setFitness(int fitness) {
+        this.fitness = fitness;
     }
     
     
+
 }

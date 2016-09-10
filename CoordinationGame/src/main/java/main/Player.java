@@ -41,4 +41,20 @@ public class Player {
         this.newStrategy = newStrategy;
     }
 
+    public int[] getFitnesses() {
+        return fitnesses;
+    }
+    
+    public void tryChangingStrategies() {
+        Random r = new Random();
+        
+        int denominator = this.fitnesses[0] + this.fitnesses[1];
+        int nominator = this.fitnesses[this.getCurrentStrategy().getStrategy()];
+        double quotient = (double) nominator/denominator;
+        System.out.println("Relative fitness of strategy " + this.currentStrategy.getStrategy() + ": " + quotient);
+        if (r.nextDouble() > quotient) {
+            this.currentStrategy.setStrategy(1 - this.currentStrategy.getStrategy());
+        }
+    }
+
 }
