@@ -1,2 +1,2 @@
 # Coordination-Game
-A simple simulation exploring the dynamics of an ecolutionary coordination game.
+A simple simulation exploring the dynamics of a coordination game.
