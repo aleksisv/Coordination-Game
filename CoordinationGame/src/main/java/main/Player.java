@@ -12,8 +12,8 @@ public class Player {
     public Player() {
         this.currentStrategy = giveRandomStrategy();
         this.newStrategy = null;
-        this.fitnesses = new int[2];
-        this.fitnesses[0] = this.fitnesses[1] = 50;
+        this.fitnesses = new int[3];
+        this.fitnesses[0] = this.fitnesses[1] = this.fitnesses[2] = 33;
     }
 
     private Strategy giveRandomStrategy() {
@@ -60,15 +60,27 @@ public class Player {
 
     public void tryChangingStrategiesWithMorePossibilities() {
         Random r = new Random();
-        int denominator = 0;
-        for (int i = 0; i < this.fitnesses.length; i++) {
-            denominator += this.fitnesses[i];
-        }
+        int denominator = calculateTotalFitness(this.fitnesses);
         int nominator = this.fitnesses[this.getCurrentStrategy().getStrategy()];
-        int totalFitness = calculateTotalFitness(this.fitnesses);
+        this.currentStrategy.setStrategy(findTheSpot(this.fitnesses, r.nextInt(denominator)));
     }
     
     public int calculateTotalFitness(int[] fitness){
+        int j = 0;
+        for (int i = 0; i < fitness.length; i++) {
+            j += this.fitnesses[i];
+        }
+        return j;
+    }
+    
+    public int findTheSpot(int[] fitness, int random) {
+        int count = 0;
+        for (int i = 0; i < fitness.length; i++) {
+            count += fitness[i];
+            if(count > random) {
+                return i;
+            }
+        }
         return 0;
     }
 
