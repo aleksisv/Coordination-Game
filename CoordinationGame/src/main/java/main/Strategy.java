@@ -7,7 +7,7 @@ public class Strategy {
 
     public Strategy(int strategy) {
         this.strategy = strategy;
-        this.fitness = 50;
+        this.fitness = 33;
     }
 
     public int getStrategy() {

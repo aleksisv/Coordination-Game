@@ -18,11 +18,11 @@ public class Player {
 
     private Strategy giveRandomStrategy() {
         Random r = new Random();
-        if (r.nextBoolean()) {
+        if (r.nextDouble() < 0.33) {
             return new Strategy(0);
-        } else {
+        } else if (r.nextDouble() < 0.66) {
             return new Strategy(1);
-        }
+        } else return new Strategy(2);
 
     }
 
@@ -49,7 +49,7 @@ public class Player {
     public void tryChangingStrategies() {
         Random r = new Random();
 
-        int denominator = this.fitnesses[0] + this.fitnesses[1];
+        int denominator =  this.fitnesses[0] + this.fitnesses[1];
         int nominator = this.fitnesses[this.getCurrentStrategy().getStrategy()];
         double quotient = (double) nominator / denominator;
         System.out.println("The relative fitness of strategy " + this.currentStrategy.getStrategy() + ": " + quotient);
@@ -62,6 +62,10 @@ public class Player {
         Random r = new Random();
         int denominator = calculateTotalFitness(this.fitnesses);
         int nominator = this.fitnesses[this.getCurrentStrategy().getStrategy()];
+        
+        double quotient = (double) nominator / denominator;
+        System.out.println("The relative fitness of strategy " + this.currentStrategy.getStrategy() + ": " + quotient);
+        
         this.currentStrategy.setStrategy(findTheSpot(this.fitnesses, r.nextInt(denominator)));
     }
     

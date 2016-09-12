@@ -34,11 +34,17 @@ public class Game {
     }
 
     public void setPayoffs() {
-        Pair[][] payoffs = new Pair[2][2];
+        Pair[][] payoffs = new Pair[3][3];
         payoffs[0][0] = new Pair(10, 10);
-        payoffs[0][1] = new Pair(0, 0);
+        payoffs[0][1] = new Pair(2, 2);
+        payoffs[0][2] = new Pair(0, 2);
         payoffs[1][0] = new Pair(0, 0);
-        payoffs[1][1] = new Pair(5, 5);
+        payoffs[1][1] = new Pair(3, 3);
+        payoffs[1][2] = new Pair(0, 0);
+        payoffs[2][0] = new Pair(0, 0);
+        payoffs[2][1] = new Pair(0, 0);
+        payoffs[2][2] = new Pair(5, 5);
+        
         
         setPayoffMatrix(payoffs);
     }
@@ -64,8 +70,10 @@ public class Game {
         player1.getFitnesses()[player1.getCurrentStrategy().getStrategy()] += payoff1;
         player2.getFitnesses()[player1.getCurrentStrategy().getStrategy()] += payoff2;
         
-        player1.tryChangingStrategies();
-        player2.tryChangingStrategies();
+        //player1.tryChangingStrategies();
+        //player2.tryChangingStrategies();
+        player1.tryChangingStrategiesWithMorePossibilities();
+        player2.tryChangingStrategiesWithMorePossibilities();
     }
 
 }
